@@ -1,0 +1,80 @@
+﻿@page "/"
+
+<PageTitle>@Localizer[Const.Title]</PageTitle>
+
+<MudPaper Height="600px" Width="60%" Class="pa-4" Elevation="5" Outlined="false" Style="Margin: auto; background-color: #eee">
+
+    <MudContainer MaxWidth="MaxWidth.Small">
+
+        <MudText Typo="Typo.h4" GutterBottom="true" Align="Align.Center">@Localizer[Const.Title]</MudText>
+
+        <MudTextField T="string" @bind-Value="_host"
+                      Margin="Margin.Dense"
+                      Label=@Localizer[Const.Host]
+                      HelperText=@Localizer[Const.HostHelp]
+                      HelperTextOnFocus="true"
+                      Variant="Variant.Text"
+                      Style="background-color: white" />
+
+        <MudTextField T="int?" @bind-Value="_port"
+                      Margin="Margin.Dense"
+                      Label=@Localizer[Const.Port]
+                      HelperText=@Localizer[Const.PortHelp]
+                      HelperTextOnFocus="true"
+                      Variant="Variant.Text"
+                      Style="background-color: white"
+                      InputType="InputType.Number" />
+
+        <MudTextField T="string" @bind-Value="_password"
+                      Margin="Margin.Dense"
+                      Label=@Localizer[Const.Password]
+                      HelperText=@Localizer[Const.PasswordHelp]
+                      HelperTextOnFocus="true"
+                      Variant="Variant.Text"
+                      InputType="InputType.Password"
+                      Style="background-color: white" />
+
+        <MudTextField T="string" @bind-Value="_command"
+                      Margin="Margin.Dense"
+                      Label=@Localizer[Const.Command]
+                      HelperText=@Localizer[Const.CommandHelp]
+                      HelperTextOnFocus="true"
+                      Variant="Variant.Outlined"
+                      Lines="8"
+                      Style="background-color: white" />
+
+        <div style="width: 50%; margin: auto">
+            <MudButton ButtonType="ButtonType.Submit"
+                       Size="Size.Medium"
+                       Class="mr-1"
+                       Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       Disabled="@_processing"
+                       OnClick="SendCommand">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">@Localizer[Const.Processing]</MudText>
+                }
+                else
+                {
+                    <MudText>@Localizer[Const.Send]</MudText>
+                }
+            </MudButton>
+
+            <MudButton ButtonType="ButtonType.Reset"
+                       Size="Size.Medium"
+                       Class="ml-1"
+                       Variant="Variant.Filled"
+                       Color="Color.Default">
+                @Localizer[Const.Clear]
+            </MudButton>
+        </div>
+
+    </MudContainer>
+
+@*    <div>
+        <MudIconButton Icon="@(Localize.GetEmbeddedFlag("en-US"))" OnClick="@(() => SwitchLanguage("en-US"))" Size="Size.Small" />
+        <MudIconButton Icon="@(Localize.GetEmbeddedFlag("da-DK"))" OnClick="@(() => SwitchLanguage("da-DK"))" Size="Size.Small" />
+    </div>
+*@</MudPaper>

@@ -1,0 +1,12 @@
+﻿<MudDialog DefaultFocus="DefaultFocus.LastChild" Style="Width:600px">
+    <DialogContent>
+        <MudContainer Style="max-height: 400px; overflow-y: scroll; overflow-x: scroll">
+            <pre>
+                @Content
+            </pre>
+        </MudContainer>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="OkClicked">@Localizer["Ok"]</MudButton>
+    </DialogActions>
+</MudDialog>
