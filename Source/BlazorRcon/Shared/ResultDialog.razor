@@ -1,6 +1,7 @@
 ﻿<MudDialog DefaultFocus="DefaultFocus.LastChild" Style="Width:600px">
     <DialogContent>
         <MudContainer Style="max-height: 400px; overflow-y: scroll; overflow-x: scroll">
+            <div>@(DateTime.Now.ToString("G"))</div>
             <pre>
                 @Content
             </pre>
