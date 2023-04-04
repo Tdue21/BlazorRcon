@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Flurl.Http" Version="3.2.4" />
-    <PackageReference Include="MudBlazor" Version="6.0.13" />
+    <PackageReference Include="MudBlazor" Version="6.2.0" />
     <PackageReference Include="Rcon" Version="1.0.0" />
   </ItemGroup>
 
