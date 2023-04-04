@@ -5,5 +5,4 @@ namespace BlazorRcon.Services;
 public class LocalizationService : ILocalizationService
 {
     public string this[string text] => text;
-
 }

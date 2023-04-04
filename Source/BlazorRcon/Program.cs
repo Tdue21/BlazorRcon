@@ -1,5 +1,7 @@
 using BlazorRcon.Interfaces;
 using BlazorRcon.Services;
+using BlazorRcon.ViewModels;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using MudBlazor.Services;
 
@@ -12,7 +14,13 @@ try
     // Add services to the container.
     builder.Services.AddRazorPages();
     builder.Services.AddServerSideBlazor();
-    builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
+
+    builder.Services.AddTransient<ProtectedBrowserStorage, ProtectedLocalStorage>();
+    builder.Services.AddTransient<ILocalizationService, LocalizationService>();
+    builder.Services.AddTransient<IRconClient, RconClient>();
+    builder.Services.AddTransient<IBrowserStorage, BrowserStorage>();
+    builder.Services.AddTransient<MainViewModel>();
+
     builder.Services.AddMudServices();
 
     var app = builder.Build();
