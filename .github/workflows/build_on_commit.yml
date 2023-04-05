@@ -29,4 +29,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish --no-build --ucr --sc  --nologo --arch x86 --os win --output win-x86
+      run: dotnet publish BlazorRcon/ --configuration Release --sc true --arch x86 --os win --output publish/win-x86
