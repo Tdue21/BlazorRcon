@@ -28,3 +28,5 @@ jobs:
       run: dotnet build --no-restore --source Source
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish --no-build --ucr --sc  --nologo --arch x86 --os win --output win-x86
