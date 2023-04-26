@@ -1,11 +1,12 @@
 ﻿@page "/"
+@using BlazorRcon.Models
 
 <PageTitle>@Localizer[Const.Title]</PageTitle>
 
 <MudPaper Height="600px" Width="60%" Class="pa-4" Elevation="5" Outlined="false" Style="Margin: auto; background-color: #eee">
 
     <MudContainer MaxWidth="MaxWidth.Small">
-
+        
         <MudText Typo="Typo.h4" GutterBottom="true" Align="Align.Center">@Localizer[Const.Title]</MudText>
 
         <MudTextField T="string" @bind-Value="_host"

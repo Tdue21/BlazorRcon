@@ -8,6 +8,8 @@ public struct Const
     public const string CommandHelp = "Enter RCON command";
     public const string Host = "Host";
     public const string HostHelp = "Enter name or address of host";
+    public const string Server = "Server";
+    public const string ServerHelp = "Select server";
     public const string Ok = "Ok";
     public const string Password = "Password";
     public const string PasswordHelp = "Enter RCON password for host";
