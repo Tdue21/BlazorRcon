@@ -11,14 +11,15 @@ try
 
     StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
 
+    builder.Services.Configure<IISOptions>(options => options.ForwardClientCertificate = false);
     // Add services to the container.
     builder.Services.AddRazorPages();
     builder.Services.AddServerSideBlazor();
 
     builder.Services.AddTransient<ProtectedBrowserStorage, ProtectedLocalStorage>();
     builder.Services.AddTransient<ILocalizationService, LocalizationService>();
-    builder.Services.AddTransient<IRconClient, RconClient>();
     builder.Services.AddTransient<IBrowserStorage, BrowserStorage>();
+    builder.Services.AddTransient<IRconClient, RconClient>();
     builder.Services.AddTransient<MainViewModel>();
 
     builder.Services.AddMudServices();
@@ -40,6 +41,7 @@ try
     app.MapFallbackToPage("/_Host");
 
     app.Run();
+
 
 }
 catch (Exception ex)

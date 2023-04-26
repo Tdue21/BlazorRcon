@@ -1,15 +1,14 @@
 ﻿using BlazorRcon.Interfaces;
 using BlazorRcon.Models;
-using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
 namespace BlazorRcon.ViewModels;
 
 public class MainViewModel
 {
     private readonly IRconClient _rconClient;
-    private readonly ProtectedBrowserStorage _storage;
+    private readonly IBrowserStorage _storage;
 
-    public MainViewModel(IRconClient rconClient, ProtectedBrowserStorage storage)
+    public MainViewModel(IRconClient rconClient, IBrowserStorage storage)
     {
         _rconClient = rconClient ?? throw new ArgumentNullException(nameof(rconClient));
         _storage = storage ?? throw new ArgumentNullException(nameof(storage));
@@ -24,14 +23,29 @@ public class MainViewModel
 
     public async Task<RconData> LoadStateAsync()
     {
-        var data = await _storage.GetAsync<RconData>("RconData");
-        return data.Success && data.Value != null
-                   ? data.Value
-                   : RconData.Default();
+        try
+        {
+            var data = await _storage.GetAsync<RconData>("RconData");
+            return data.Success && data.Value != null
+                       ? data.Value
+                       : RconData.Default();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return RconData.Default();
+        }
     }
 
     private async Task SaveStateAsync(RconData data)
     {
-        await _storage.SetAsync("RconData", data);
+        try
+        {
+            await _storage.SetAsync("RconData", data);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
 }

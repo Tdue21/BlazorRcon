@@ -19,7 +19,7 @@ public partial class Index
     [Inject] public IDialogService DialogService { get; set; } = null!;
     [Inject] public MainViewModel ViewModel { get; set; } = null!;
 
-    private RconData RconData { get; set; } = null!;
+    private RconData RconData { get; set; } = RconData.Default();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -56,7 +56,7 @@ public partial class Index
                           };
             var parameters = new DialogParameters { { "Content", result } };
 
-            DialogService.Show<ResultDialog>(Localizer[Const.RconResponse], parameters, options);
+            await DialogService.ShowAsync<ResultDialog>(Localizer[Const.RconResponse], parameters, options);
         }
         finally
         {

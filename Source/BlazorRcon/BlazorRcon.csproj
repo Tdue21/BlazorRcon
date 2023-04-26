@@ -1,19 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-	  <TargetFramework>net7.0</TargetFramework>
-	  <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
-	  <Nullable>enable</Nullable>
-	  <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MudBlazor" Version="6.2.0" />
-    <PackageReference Include="Rcon" Version="1.0.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MudBlazor" Version="6.2.0" />
+		<PackageReference Include="Rcon" Version="1.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="ViewModels\" />
+	</ItemGroup>
 
 </Project>
