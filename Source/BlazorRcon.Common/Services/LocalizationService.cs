@@ -1,6 +1,6 @@
-﻿using BlazorRcon.Interfaces;
+﻿using BlazorRcon.Common.Interfaces;
 
-namespace BlazorRcon.Services;
+namespace BlazorRcon.Common.Services;
 
 public class LocalizationService : ILocalizationService
 {

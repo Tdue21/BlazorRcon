@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorRcon.Common.Interfaces;
+using BlazorRcon.Common.Models;
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using BlazorRcon.Interfaces;
-using BlazorRcon.Models;
 using BlazorRcon.Shared;
 using BlazorRcon.ViewModels;
 

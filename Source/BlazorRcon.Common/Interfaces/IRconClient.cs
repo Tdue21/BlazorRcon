@@ -1,6 +1,6 @@
-﻿using BlazorRcon.Models;
+﻿using BlazorRcon.Common.Models;
 
-namespace BlazorRcon.Interfaces;
+namespace BlazorRcon.Common.Interfaces;
 
 public interface IRconClient
 {

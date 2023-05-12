@@ -1,4 +1,4 @@
-﻿namespace BlazorRcon.Models;
+﻿namespace BlazorRcon.Common.Models;
 
 public class RconData
 {

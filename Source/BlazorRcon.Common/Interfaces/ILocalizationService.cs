@@ -1,4 +1,4 @@
-﻿namespace BlazorRcon.Interfaces;
+﻿namespace BlazorRcon.Common.Interfaces;
 
 public interface ILocalizationService
 {

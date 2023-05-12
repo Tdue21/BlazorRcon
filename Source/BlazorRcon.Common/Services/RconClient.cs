@@ -1,7 +1,7 @@
-﻿using BlazorRcon.Interfaces;
-using BlazorRcon.Models;
+﻿using BlazorRcon.Common.Interfaces;
+using BlazorRcon.Common.Models;
 
-namespace BlazorRcon.Services;
+namespace BlazorRcon.Common.Services;
 
 public class RconClient : IRconClient
 {

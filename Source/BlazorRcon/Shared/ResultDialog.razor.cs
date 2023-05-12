@@ -1,4 +1,4 @@
-﻿using BlazorRcon.Interfaces;
+﻿using BlazorRcon.Common.Interfaces;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 

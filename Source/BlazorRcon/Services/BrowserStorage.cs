@@ -12,7 +12,31 @@ public class BrowserStorage : IBrowserStorage
         _storage = storage ?? throw new ArgumentNullException(nameof(storage));
     }
 
-    public ValueTask<ProtectedBrowserStorageResult<TType>> GetAsync<TType>(string name) => _storage.GetAsync<TType>(name);
+    public async ValueTask<TType?> GetAsync<TType>(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
 
-    public ValueTask SetAsync<TType>(string name, TType data) => _storage.SetAsync(name, data);
+        var data = await _storage.GetAsync<TType>("RconData", name);
+        return data.Success 
+                   ? data.Value 
+                   : default;
+    }
+
+    public async ValueTask SetAsync<TType>(string name, TType data)
+    {
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
+        if (data == null)
+        {
+            throw new ArgumentNullException(nameof(data));
+        }
+
+        await _storage.SetAsync("RconData", name, data);
+    }
 }

@@ -1,13 +1,27 @@
+using BlazorRcon.Common.Interfaces;
+using BlazorRcon.Common.Services;
 using BlazorRcon.Interfaces;
 using BlazorRcon.Services;
 using BlazorRcon.ViewModels;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using MudBlazor.Services;
+using Serilog;
 
+Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            //.WriteTo.Logger(lc => lc.Filter.ByIncludingOnly(le => le.))
+            .CreateLogger();
 try
 {
+    Log.Information("Starting web application");
+
     var builder = WebApplication.CreateBuilder(args);
+
+    builder.Host.UseSerilog((context, config) =>
+                            {
+                                config.ReadFrom.Configuration(context.Configuration);
+                            });
 
     StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
 
@@ -41,10 +55,12 @@ try
     app.MapFallbackToPage("/_Host");
 
     app.Run();
-
-
 }
 catch (Exception ex)
 {
-    Console.WriteLine(ex.ToString());
+    Log.Fatal(ex, "Application terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }
